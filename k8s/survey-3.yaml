@@ -1,0 +1,165 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  creationTimestamp: '2025-03-19T19:39:20Z'
+  generation: 1
+  labels:
+    workload.user.cattle.io/workloadselector: apps.deployment-default-survey-3
+  managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:workload.user.cattle.io/workloadselector: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:workload.user.cattle.io/workloadselector: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity: {}
+              f:containers:
+                k:{"name":"container-0"}:
+                  .: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":8080,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:securityContext:
+                    .: {}
+                    f:allowPrivilegeEscalation: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsNonRoot: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: agent
+      operation: Update
+      time: '2025-03-19T19:39:20Z'
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: '2025-03-19T19:39:22Z'
+  name: survey-3
+  namespace: default
+  resourceVersion: '23559'
+  uid: cc528ba8-a3a6-4abd-bbfd-6b01abcc6a48
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-default-survey-3
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-default-survey-3
+      namespace: default
+    spec:
+      affinity: {}
+      containers:
+        - image: arc2233/studentsurvey:0.1
+          imagePullPolicy: Never
+          name: container-0
+          ports:
+            - containerPort: 8080
+              name: load-balancer
+              protocol: TCP
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: false
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+    - lastTransitionTime: '2025-03-19T19:39:22Z'
+      lastUpdateTime: '2025-03-19T19:39:22Z'
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2025-03-19T19:39:20Z'
+      lastUpdateTime: '2025-03-19T19:39:22Z'
+      message: ReplicaSet "survey-3-55cdb7df4" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: 'True'
+      type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
