@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloudprovider.harvesterhci.io/ipam: dhcp
+    field.cattle.io/targetWorkloadIds: '["default/survey-3"]'
+    management.cattle.io/ui-managed: 'true'
+  creationTimestamp: '2025-03-19T19:39:20Z'
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cloudprovider.harvesterhci.io/ipam: {}
+            f:field.cattle.io/targetWorkloadIds: {}
+            f:management.cattle.io/ui-managed: {}
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":80,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: agent
+      operation: Update
+      time: '2025-03-19T19:39:20Z'
+  name: survey-3-loadbalancer
+  namespace: default
+  resourceVersion: '23514'
+  uid: 7956ef73-aba7-481d-bff9-78aa670a0602
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.43.115.52
+  clusterIPs:
+    - 10.43.115.52
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: load-balancer
+      nodePort: 31541
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-default-survey-3
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
